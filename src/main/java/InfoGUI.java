@@ -9,7 +9,8 @@ import java.io.IOException;
  *  and email addresss
  *  @version 0.1.0
  */
-public class infoGUI extends JFrame {
+public class InfoGUI extends JFrame {
+    //TODO: dispose of this or adjust it to fit create new user
     //TODO: This is a Band aid right now do not use
     //maybe use as base for add new user
     private final JPanel panel = new JPanel();
@@ -18,7 +19,7 @@ public class infoGUI extends JFrame {
      * Constructs a small GUI with Jlables and text box for
      * user to enter information
      */
-    public infoGUI() {
+    public InfoGUI() {
         setSize(350,200);
         setTitle("User Info");
 

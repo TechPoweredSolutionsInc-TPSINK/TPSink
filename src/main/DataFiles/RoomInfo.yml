@@ -1,2 +1,3 @@
-roomName: "Bathroom"
-applianceList: ["Sink", "Toilet", "Bathtub", "Fan"]
+name: "Bathroom"
+dimensions: 250
+description: "This is a description of the room."

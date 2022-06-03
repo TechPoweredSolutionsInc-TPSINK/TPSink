@@ -2,7 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
+/**
+ *  A class responsible creating a new User panel.
+ *  @author Jasper Newkirk
+ *  @version 0.0.1
+ */
 public class UserGUI extends GridTemplateGUI{
 
     private final String path;
@@ -17,7 +23,11 @@ public class UserGUI extends GridTemplateGUI{
     protected ActionListener getBackButtonActionListener() {
         return e -> {
             dispose();
-            new MainGUI();
+            try {
+                new MainGUI();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         };
     }
 

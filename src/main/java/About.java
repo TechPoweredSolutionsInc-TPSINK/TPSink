@@ -6,6 +6,16 @@
  *  @version 0.1.0
  */
 public class About {
+    private static Login L;
+    static {
+        try {
+            L = new Login();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * The current version number of the program.
      */
@@ -34,7 +44,8 @@ public class About {
     /**
      * An array of about info headings
      */
-    private static final String[] HEADINGS = {"This app is registered to: " + Login.getUserName(), "This app is provided by: " + GROUP_NAME};
+    //TODO need to fix to call username a different way
+    private static final String[] HEADINGS = {"This app is registered to: " + L.getUserName() + "This app is provided by: " + GROUP_NAME};
 
     /**
      * @return HEADINGS

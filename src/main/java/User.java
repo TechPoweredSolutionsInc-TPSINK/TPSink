@@ -48,6 +48,7 @@ public class User {
      * @param email user email
      */
     public User(String name, String pass, String email) {
+        //TODO need to create UserInfo.yml and login info when new user constructed
         userName = name;
         password = pass;
         userEmail = email;
@@ -110,7 +111,7 @@ public class User {
     public void yamlRead() throws Exception {
         File ymlFile = new File("src/main/DataFiles/UserInfo.yml");
         User TDA = objMap.readValue(ymlFile, User.class);
-        System.out.println(TDA.toString());
+        System.out.println(TDA);
     }
 
     /**
@@ -136,7 +137,7 @@ public class User {
         success.setText("Entered");
         User TDA = new User(
                 n,
-                "",
+                password,
                 e
         );
         objMap.writeValue(new File("src/main/DataFiles/UserInfo.yml"), TDA);
@@ -144,7 +145,7 @@ public class User {
 
     /**
      * takes a user object and writes to UserInfo with the information
-     * passed in the usr object
+     * passed in the user object
      * @param u User object
      * @throws IOException
      */

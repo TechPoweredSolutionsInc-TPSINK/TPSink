@@ -16,16 +16,18 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        //Room r = new Room();
-        //r.yamlRead();
+//        Room r = new Room();
+//        r.yamlRead();
         //User us = new User();
+        //new UserGUI("Xavier");
         //us.yamlRead();
         //us.yamlWrite();
-        //new MainGUI();
-        //new RoomGUI("Le");
-        new UserGUI("Le");
-//        File le = new File("User/Le");
-//        System.out.print(le.isDirectory());
+        //new User();
+        new MainGUI();
+        //new RoomGUI("Xavier");
+//        Login a = new Login();
+//        a.yamlRead();
+
     }
 
     /**

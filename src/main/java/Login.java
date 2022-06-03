@@ -1,58 +1,86 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
+
 import javax.swing.*;
+import java.io.File;
 
 /**
  * @author Xavier Hines
  * Date 5/9/22
+ * @version 0.1.2
  */
 public class Login {
     /**
      * name of the window
      */
-    private static final String WINDOW_NAME = "Login";
+    private String windowName;
     /**
      * Where the username will be stored?
      */
-    private static String USER_NAME = "";
+    private String userName;
     /**
      * where the user password will be stored?
      */
-    private static String USER_PASSWORD = "";
+    private String password;
 
-    /**
-     * @return user password
-     */
-    public static String getUserPassword() {
-        return USER_PASSWORD;
+    private final ObjectMapper objMap = new ObjectMapper(new YAMLFactory().disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER));
+
+    public Login() {
     }
 
-    //TODO User name and password Constructor
-
-    /**
-     * @param userPassword password to set
-     */
-    public static void setUserPassword(String userPassword) {
-        USER_PASSWORD = userPassword;
-    }
-
-    /**
-     * @return username
-     */
-    public static String getUserName() {
-        return USER_NAME;
-    }
-
-    /**
-     * @param userName sets username
-     */
-    public static void setUserName(String userName) {
-        USER_NAME = userName;
+    public void setWindowName(String windowName) {
+        this.windowName = windowName;
     }
 
     /**
      * @return window name
      */
-    public static String getWindowName() {
-        return WINDOW_NAME;
+    public String getWindowName() {
+        return windowName;
+    }
+
+    /**
+     * @return user password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    //TODO User name and password Constructor
+
+    /**
+     * @param password password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return username
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * @param userName sets username
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "\nname: " + userName + "\npassword: " + password + "\nwindow name: " + windowName;
+    }
+
+    //TODO make a version that excepts file name/user name and gets info from that file
+    public Login readLoginInfo(String name) throws Exception {
+        File ymlFile = new File("src/main/DataFiles/"+name + "Info.yml");
+        Login getLogin = objMap.readValue(ymlFile, Login.class);
+        System.out.println(getLogin);
+        return getLogin;
     }
 
     /**
@@ -60,13 +88,17 @@ public class Login {
      * attempts to login and checks them against the saved username and password.
      * @param success Label to indicate if correct or not
      * @param name String representing username
-     * @param password String representing password
+     * @param pass String representing password
      */
-    public static void checkUserAndPassword(JLabel success, String name, String password) {
-        // TODO: Make not hard-coded
-        if (name.equals(USER_NAME) &&
-                password.equals(USER_PASSWORD)) {
+    public void checkUserAndPassword(JLabel success, LoginGUI gui,String name, String pass) throws Exception {
+        // TODO: Upon successful Login dispose other windows
+        Login loginInfo = readLoginInfo(name);
+        if (name.equals(loginInfo.userName) &&
+                pass.equals(loginInfo.password)) {
             success.setText("Login successful");
+            gui.dispose();
+            gui.getParentGUI().dispose();
+            new UserGUI(name);
         } else {
             success.setText("Wrong User Name Or Pass");
         }

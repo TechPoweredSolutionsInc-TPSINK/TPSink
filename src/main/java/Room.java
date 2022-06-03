@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
 
 import java.awt.*;
 import java.io.File;
@@ -23,7 +26,7 @@ public class Room {
 
     /**
      * Constructs a new {@link Room} with the given {@code name}. And creates a corresponding folder in the given {@code path}.
-     * @param name The name to be givn to the current {@link Room}.
+     * @param name The name to be given to the current {@link Room}.
      * @param path The path to the directory associated to the current {@link Room}.
      */
     public Room(String name, String path) {
@@ -31,7 +34,7 @@ public class Room {
     }
     /**
      * Constructs a new {@link Room} with the given {@code name}. And creates a corresponding folder in the given {@code path}.
-     * @param name The name to be givn to the current {@link Room}.
+     * @param name The name to be given to the current {@link Room}.
      * @param path The path to the directory associated to the current {@link Room}.
      * @param dimensions The dimensions of this room.
      */
@@ -40,7 +43,7 @@ public class Room {
     }
     /**
      * Constructs a new {@link Room} with the given {@code name}. And creates a corresponding folder in the given {@code path}.
-     * @param name The name to be givn to the current {@link Room}.
+     * @param name The name to be given to the current {@link Room}.
      * @param path The path to the directory associated to the current {@link Room}.
      * @param description The description of the current {@link Room}.
      */
@@ -50,7 +53,7 @@ public class Room {
 
     /**
      * Constructs a new {@link Room} with the given {@code name}. And creates a corresponding folder in the given {@code path}.
-     * @param name The name to be givn to the current {@link Room}.
+     * @param name The name to be given to the current {@link Room}.
      * @param path The path to the directory associated to the current {@link Room}.
      * @param dimensions The dimensions of the current room.
      * @param description The description of the current {@link Room}.
