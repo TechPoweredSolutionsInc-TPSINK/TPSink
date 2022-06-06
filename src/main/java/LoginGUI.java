@@ -12,12 +12,19 @@ public class LoginGUI extends JFrame {
      * Panel containing all the user needs to login
      */
     private final JPanel panel = new JPanel();
-
+    /**
+     * creates new instance of Login object
+     */
     private Login L = new Login();
+    /**
+     * field variable JFrame parent to be passed to methods
+     * that need to access this parent
+     */
     private JFrame parent;
 
     /**
      * Passes parent GUI so that they can be closed once logged into a user
+     * @author Xavier Hines
      * @param parent the mainGUI
      * @throws HeadlessException
      */
@@ -31,6 +38,7 @@ public class LoginGUI extends JFrame {
      * Creates two text boxes labeled 'User' and 'Password' that will collect that
      * information from the user. One button labeled Login that checks that info
      * against stored user login info.
+     * @author Xavier Hines
      */
     public LoginGUI() {
         setSize(350,200);
@@ -115,6 +123,7 @@ public class LoginGUI extends JFrame {
 
     /**
      * Called to return the parent  GUI of the LoginGUI
+     * @author Xavier Hines
      * @return GUI which called LoginGUI
      */
     public JFrame getParentGUI() {

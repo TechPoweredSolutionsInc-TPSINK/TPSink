@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.File;
 
 /**
@@ -13,15 +14,19 @@ public class Main {
 
     /**
      * main method, runs program
+     * @author Xavier Hines
      * @param args
      */
     public static void main(String[] args) throws Exception {
-//        Room r = new Room();
-//        r.yamlRead();
+        //Room r = new Room();
+        //r.yamlRead();
         //User us = new User();
         //new UserGUI("Xavier");
         //us.yamlRead();
         //us.yamlWrite();
+        //new MainGUI();
+        //new RoomGUI("Test");
+        //new UserGUI("Jeremy");
         //new User();
         new MainGUI();
         //new RoomGUI("Xavier");
@@ -32,6 +37,7 @@ public class Main {
 
     /**
      * returns main image path
+     * @author Jasper Newkirk
      * @return main image path
      */
     public static String getPathToLogo() {

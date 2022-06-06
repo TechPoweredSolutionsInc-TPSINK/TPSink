@@ -28,8 +28,20 @@ public class ApplianceGUI extends GridTemplateGUI{
         this.path = "User\\" + path + "\\";
         setTitle(path.substring(path.lastIndexOf("\\") + 1)); // Override title back to simple name
         this.prevPath = path.substring(0, path.lastIndexOf("\\"));
-//        System.out.println(getPrevPath());
-//        System.out.println(getPath());
+    }
+
+    @Override
+    protected void refresh() {
+        dispose();
+        new ApplianceGUI(path.substring(path.indexOf("\\") + 1).substring(0, path.substring(path.indexOf("\\") + 1).length() - 1));
+    }
+
+    /**
+     * returns the path of the newly created appliance folder
+     * @return path of new appliance folder
+     */
+    public String getPath() {
+        return path;
     }
 
     @Override
@@ -43,45 +55,37 @@ public class ApplianceGUI extends GridTemplateGUI{
     @Override
     protected ActionListener getButtonActionListener(String path) {
         return e -> {
-            //TODO: MOVE THIS SOMEWHERE ELSE
-            File f = new File("User\\" + path);
-            System.out.println(path);
-            Desktop desktop = Desktop.getDesktop();
-            if(f.exists()) {
-                try {
-                    desktop.open(f);
-                } catch (IOException ex) {
-                }
-            }
+            Note.open(path);
         };
     }
 
     @Override
     protected ActionListener getAddButtonActionListener() {
         return e -> {
-            JDialog newFileDialog = new JDialog(this, "Create Note:");
-            newFileDialog.setLayout( new FlowLayout() );
-            newFileDialog.add( new JLabel ("Create a New Note:"));
+            // Creates a series of JLabels and dialog boxes for creating a note
+            JDialog newNoteDialog = new JDialog(this, "Create Note:");
+            newNoteDialog.setLayout( new FlowLayout() );
+            newNoteDialog.add( new JLabel ("Create a New Note:"));
             JTextField fileName = new JTextField("", 20);
-            newFileDialog.add(fileName);
+            newNoteDialog.add(fileName);
             JButton okButton = new JButton ("Save");
+
+            // save the note
             okButton.addActionListener(l -> {
                 new Note(fileName.getText(), path);
-                newFileDialog.dispose();
-                dispose();
-                new ApplianceGUI(path.substring(path.indexOf("\\") + 1).substring(0, path.substring(path.indexOf("\\") + 1).length() - 1));
+                newNoteDialog.dispose();
+                refresh();
             });
-            newFileDialog.add(okButton);
-            newFileDialog.setSize(400,200);
-            newFileDialog.setVisible(true);
-            add(newFileDialog);
+            newNoteDialog.add(okButton);
+            newNoteDialog.setSize(400,200);
+            newNoteDialog.setVisible(true);
+            try {
+                add(newNoteDialog);
+            } catch (IllegalArgumentException ignore){}
         };
     }
     public String getPrevPath() {
         return prevPath;
     }
 
-    public String getPath() {
-        return path;
-    }
 }

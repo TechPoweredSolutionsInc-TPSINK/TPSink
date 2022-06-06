@@ -6,6 +6,9 @@
  *  @version 0.1.0
  */
 public class About {
+    /**
+     * creates new login object so that information from user can be accessed
+     */
     private static Login L;
     static {
         try {
@@ -14,7 +17,6 @@ public class About {
             e.printStackTrace();
         }
     }
-
 
     /**
      * The current version number of the program.

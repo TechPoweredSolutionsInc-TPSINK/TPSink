@@ -23,17 +23,28 @@ public class Login {
      * where the user password will be stored?
      */
     private String password;
-
+    /**
+     * So that User information can be read from and written to .yml files
+     */
     private final ObjectMapper objMap = new ObjectMapper(new YAMLFactory().disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER));
 
+    /**
+     * default constructor
+     * @author Xavier Hines
+     */
     public Login() {
     }
 
+    /**
+     * @author Xavier Hines
+     * @param windowName
+     */
     public void setWindowName(String windowName) {
         this.windowName = windowName;
     }
 
     /**
+     * @author Xavier Hines
      * @return window name
      */
     public String getWindowName() {
@@ -41,15 +52,15 @@ public class Login {
     }
 
     /**
+     * @author Xavier Hines
      * @return user password
      */
     public String getPassword() {
         return password;
     }
 
-    //TODO User name and password Constructor
-
     /**
+     * @author Xavier Hines
      * @param password password to set
      */
     public void setPassword(String password) {
@@ -57,6 +68,7 @@ public class Login {
     }
 
     /**
+     * @author Xavier Hines
      * @return username
      */
     public String getUserName() {
@@ -64,6 +76,7 @@ public class Login {
     }
 
     /**
+     * @author Xavier Hines
      * @param userName sets username
      */
     public void setUserName(String userName) {
@@ -75,6 +88,14 @@ public class Login {
         return "\nname: " + userName + "\npassword: " + password + "\nwindow name: " + windowName;
     }
 
+    /**
+     * accepts username and reads the User information from that users'
+     * info.yml file.
+     * @author Xavier Hines
+     * @param name the username used to login
+     * @return a login object with information read from .yml file
+     * @throws Exception
+     */
     //TODO make a version that excepts file name/user name and gets info from that file
     public Login readLoginInfo(String name) throws Exception {
         File ymlFile = new File("src/main/DataFiles/"+name + "Info.yml");
@@ -86,6 +107,7 @@ public class Login {
     /**
      * Action that will accept a string name and password when the user
      * attempts to login and checks them against the saved username and password.
+     * @author Xavier Hines
      * @param success Label to indicate if correct or not
      * @param name String representing username
      * @param pass String representing password

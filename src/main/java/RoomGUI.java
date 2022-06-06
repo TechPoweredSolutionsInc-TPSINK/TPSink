@@ -31,10 +31,21 @@ public class RoomGUI extends GridTemplateGUI{
 //        System.out.println(getPrevPath());
     }
 
+    @Override
+    protected void refresh() {
+        dispose();
+        new RoomGUI(path.substring(path.indexOf("\\") + 1).substring(0, path.substring(path.indexOf("\\") + 1).length() - 1));
+    }
+
     /**
-     *
-     * @return
+     * returns the folder path of the newly created room
+     * @author Xavier Hines
+     * @return the folder path of the new room
      */
+    public String getPath() {
+        return path;
+    }
+
     @Override
     protected ActionListener getBackButtonActionListener() {
         return e -> {
@@ -55,42 +66,42 @@ public class RoomGUI extends GridTemplateGUI{
     @Override
     protected ActionListener getAddButtonActionListener() {
         return e -> {
-            //Creates a series of Jlabels and dialog boxes for createing a room and describing
-            //what is in the room or it purpose
-            JDialog newRoomDialog = new JDialog(this, "Create Appliance:");
-            newRoomDialog.setLayout( new FlowLayout() );
-            newRoomDialog.add( new JLabel ("Create a New Appliance:"));
+            // Creates a series of JLabels and dialog boxes for creating an appliance
+            JDialog newApplianceDialog = new JDialog(this, "Create Appliance:");
+            newApplianceDialog.setLayout( new FlowLayout() );
+            newApplianceDialog.add( new JLabel ("Create a New Appliance:"));
             JTextField roomName = new JTextField("", 20);
-            newRoomDialog.add(roomName);
-            newRoomDialog.add( new JLabel ("Description:"));
+            newApplianceDialog.add(roomName);
+            newApplianceDialog.add( new JLabel ("Description:"));
             JTextField description = new JTextField("", 20);
-            newRoomDialog.add(description);
+            newApplianceDialog.add(description);
             
-            //New button 'Save' that will save the Room name and description and 
-            //create a new room folder
+            // save the appliance name and description
             JButton okButton = new JButton ("Save");
             okButton.addActionListener(l -> {
                 // TODO: Test this
                 // TODO: add functionality for dimensions
                 new Appliance(roomName.getText(), path, description.getText());
-                newRoomDialog.dispose();
-                dispose();
-                new RoomGUI(path.substring(path.indexOf("\\") + 1).substring(0, path.substring(path.indexOf("\\") + 1).length() - 1));
+                newApplianceDialog.dispose();
+                refresh();
             });
             
-            newRoomDialog.add(okButton);
-            newRoomDialog.setSize(400,200);
-            newRoomDialog.setVisible(true);
-            add(newRoomDialog);
+            newApplianceDialog.add(okButton);
+            newApplianceDialog.setSize(400,200);
+            newApplianceDialog.setVisible(true);
+            try {
+                add(newApplianceDialog);
+            } catch (IllegalArgumentException ignore){}
         };
     }
-}
 
+    /**
+     * Returns the previous path relative to the current {@link RoomGUI#path}.
+     * @author Phuoc Le
+     * @return the previous path relative to the current {@link RoomGUI#path}.
+     */
     public String getPrevPath() {
         return prevPath;
     }
 
-    public String getPath() {
-        return path;
-    }
 }

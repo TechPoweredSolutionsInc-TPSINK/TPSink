@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,6 +16,7 @@ public class Note {
     /**
      * Constructs a new file with the given {@code fileName} in the given {@code path}. This new file will be
      * a {@link Note#fileType} file.
+     * @authors Jasper Newkirk
      * @param fileName the name of the file to be created.
      * @param path the parent directory of the file.
      */
@@ -29,6 +31,23 @@ public class Note {
         try {
             f.createNewFile();
         } catch (IOException ex) {
+        }
+    }
+
+    /**
+     * Opens a file at the given {@code path}.
+     * @author Jasper Newkirk
+     * @param path the path of the file to be opened.
+     */
+    public static void open(String path) {
+        File f = new File("User\\" + path);
+        System.out.println(path);
+        Desktop desktop = Desktop.getDesktop();
+        if(f.exists()) {
+            try {
+                desktop.open(f);
+            } catch (IOException ex) {
+            }
         }
     }
 }

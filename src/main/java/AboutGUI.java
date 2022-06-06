@@ -17,6 +17,8 @@ public class AboutGUI extends JFrame {
     /**
      * Constructor that when called creates new about GUI containing
      * authors of application the user it is assigned to and the version.
+     * @author Xavier Hines
+     * @author Jasper Newkirk
      */
     public AboutGUI() {
         panel.setBorder(BorderFactory.createEmptyBorder(20,30,10,30));
