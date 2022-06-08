@@ -1,11 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  *  A class responsible creating a new User panel.
@@ -27,7 +22,7 @@ public class UserGUI extends GridTemplateGUI{
         super("User\\" + username + "\\");
         this.path = "User\\" + username + "\\";
         setTitle(username); // Override title back to simple name
-        User.initUser(path);
+        User.initHiddenDir(path);
     }
 
     /**

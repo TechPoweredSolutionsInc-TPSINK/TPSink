@@ -157,7 +157,7 @@ public class User {
                 pass,
                 e
         );
-        initUser("DataFiles");
+        initHiddenDir("DataFiles");
         objMap.writeValue(new File("DataFiles/" + n + "Info.yml"), TDA);
     }
 
@@ -222,18 +222,18 @@ public class User {
     }
 
     /**
-     * Creates the {@code User} folder with a nested folder of the username if login successful.
+     * Creates the hidden {@code path} folder.
      * @author Jasper Newkirk
      */
-    protected static void initUser(String path) {
+    protected static void initHiddenDir(String path) {
         File user = new File(path);
         try {
             user.mkdirs();
             Files.setAttribute(FileSystems.getDefault().getPath(path.contains("\\") ? path.substring(0, path.indexOf("\\")) : path), "dos:hidden", true);
         } catch (IOException e) {
+            path = "." + path;
             user = new File(path);
             user.mkdirs();
-            path = "." + path;
         }
     }
 }
