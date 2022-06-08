@@ -113,7 +113,6 @@ class UserGUITest {
         assertNotNull(newUser);
         assertEquals("User\\JohnWick\\", newUser.getPath());
 
-
         Files.delete(tempUserDir2);
     }
 
@@ -122,7 +121,7 @@ class UserGUITest {
      * @author Phuoc Le
      */
     @Test
-    void testUserGUITile(){
+    void testUserGUITitle(){
         assertEquals("TestPerson", userG.getTitle());
     }
 }
