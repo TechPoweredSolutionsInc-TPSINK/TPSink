@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * This class is made to test out UserGUI class.
  */
 class AboutGUITest {
+    /**
+     * aboutG is used to for tests.
+     */
     private AboutGUI aboutG;
 
     /**

@@ -10,10 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * This class is made to test out MainGUI class.
  */
 class MainGUITest {
+    /**
+     * mainG is used to for tests.
+     */
     private MainGUI mainG;
 
     /**
      * Set up before we test all methods
+     * @author Phuoc Le
      */
     @BeforeEach
     void setUp() {
@@ -22,6 +26,7 @@ class MainGUITest {
 
     /**
      * testNonNull is to check if the initiation of object is successful or not.
+     * @author Phuoc Le
      */
     @Test
     void testNonNull(){
